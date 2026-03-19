@@ -42,11 +42,11 @@ def _get_client():
 def _player_row(player_index):
     """
     Calculates the sheet row for a player given their index in WATCHED_PLAYERS.
-    Layout: 1 header row, then blocks of 10 players + 1 totals row each.
+    Layout: repeating blocks of 1 block header + 10 players + 1 extra row (12 rows total per block).
     """
     block = player_index // 10
     pos   = player_index % 10
-    return block * 11 + pos + 2  # +2 accounts for header row and 1-based indexing
+    return block * 12 + pos + 2  # +1 for block header in first block; +3 per subsequent block (extra row + next block header + player)
 
 
 def write_points(results, round_number):
