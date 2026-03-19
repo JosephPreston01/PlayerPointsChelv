@@ -1,6 +1,7 @@
 name: Update Player Points
 
 on:
+  workflow_dispatch:
   schedule:
     # Every 30 minutes, 17:00–05:00 UTC (noon–midnight ET), on tournament days only
     # Round of 64:  March 20–21
