@@ -1,5 +1,13 @@
 import requests
+from datetime import datetime, timezone, timedelta
 from config import ESPN_BASE_URL, WATCHED_PLAYERS
+
+# Games run noon–midnight CST (UTC-6). Runs after midnight UTC but before 07:00 UTC
+# are still covering the previous calendar day's games, so pass yesterday's date.
+def _game_date():
+    now_utc = datetime.now(timezone.utc)
+    date = now_utc.date() if now_utc.hour >= 7 else (now_utc - timedelta(days=1)).date()
+    return date.strftime("%Y%m%d")
 
 
 def fetch_player_points():
@@ -8,7 +16,7 @@ def fetch_player_points():
     Returns a list of dicts: [{"player_name": "...", "points": 0}, ...]
     """
     scoreboard_url = f"{ESPN_BASE_URL}/scoreboard"
-    resp = requests.get(scoreboard_url, params={"groups": "100"}, timeout=10)
+    resp = requests.get(scoreboard_url, params={"groups": "100", "caldate": _game_date()}, timeout=10)
     resp.raise_for_status()
     games = resp.json().get("events", [])
 

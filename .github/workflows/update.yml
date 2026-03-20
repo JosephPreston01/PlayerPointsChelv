@@ -11,13 +11,13 @@ on:
     # Final Four:   April 4
     # Championship: April 6
     - cron: "0,30 17-23 19-22 3 *"   # March 19–22, 5pm–11:30pm UTC
-    - cron: "0,30 0-5  20-23 3 *"    # March 20–23, midnight–5am UTC
+    - cron: "0,30 0-7  20-23 3 *"    # March 20–23, midnight–7am UTC
     - cron: "0,30 17-23 26-29 3 *"   # March 26–29, 5pm–11:30pm UTC
-    - cron: "0,30 0-5  27-30 3 *"    # March 27–30, midnight–5am UTC
+    - cron: "0,30 0-7  27-30 3 *"    # March 27–30, midnight–7am UTC
     - cron: "0,30 17-23 4 4 *"       # April 4, 5pm–11:30pm UTC
-    - cron: "0,30 0-5  5 4 *"        # April 5, midnight–5am UTC
+    - cron: "0,30 0-7  5 4 *"        # April 5, midnight–7am UTC
     - cron: "0,30 17-23 6 4 *"       # April 6, 5pm–11:30pm UTC
-    - cron: "0,30 0-5  7 4 *"        # April 7, midnight–5am UTC
+    - cron: "0,30 0-7  7 4 *"        # April 7, midnight–7am UTC
 
 jobs:
   update:
