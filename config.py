@@ -11,15 +11,18 @@ GOOGLE_CREDS_FILE = os.getenv("GOOGLE_CREDS_FILE", "credentials.json")
 ESPN_BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball"
 
 # Tournament date window (inclusive)
+# NOTE: Tournament began March 19, 2026 (Round of 64 Day 1). Dates were
+# previously off by one — corrected on 2026-03-19 after first dispatch showed
+# no games due to ROUND_DATES starting on the 20th.
 TOURNAMENT_START = "2026-03-19"
 TOURNAMENT_END   = "2026-04-07"
 
 # Maps round number to the dates it is played (used to determine current column)
 ROUND_DATES = {
-    1: ["2026-03-20", "2026-03-21"],  # Round of 64
-    2: ["2026-03-22", "2026-03-23"],  # Round of 32
-    3: ["2026-03-27", "2026-03-28"],  # Sweet 16
-    4: ["2026-03-29", "2026-03-30"],  # Elite 8
+    1: ["2026-03-19", "2026-03-20"],  # Round of 64
+    2: ["2026-03-21", "2026-03-22"],  # Round of 32
+    3: ["2026-03-26", "2026-03-27"],  # Sweet 16
+    4: ["2026-03-28", "2026-03-29"],  # Elite 8
     5: ["2026-04-04"],                # Final Four
     6: ["2026-04-06"],                # Championship
 }

@@ -4,16 +4,16 @@ on:
   workflow_dispatch:
   schedule:
     # Every 30 minutes, 17:00–05:00 UTC (noon–midnight ET), on tournament days only
-    # Round of 64:  March 20–21
-    # Round of 32:  March 22–23
-    # Sweet 16:     March 27–28
-    # Elite 8:      March 29–30
+    # Round of 64:  March 19–20
+    # Round of 32:  March 21–22
+    # Sweet 16:     March 26–27
+    # Elite 8:      March 28–29
     # Final Four:   April 4
     # Championship: April 6
-    - cron: "0,30 17-23 20-23 3 *"   # March 20–23, 5pm–11:30pm UTC
-    - cron: "0,30 0-5  21-24 3 *"    # March 21–24, midnight–5am UTC
-    - cron: "0,30 17-23 27-30 3 *"   # March 27–30, 5pm–11:30pm UTC
-    - cron: "0,30 0-5  28-31 3 *"    # March 28–31, midnight–5am UTC
+    - cron: "0,30 17-23 19-22 3 *"   # March 19–22, 5pm–11:30pm UTC
+    - cron: "0,30 0-5  20-23 3 *"    # March 20–23, midnight–5am UTC
+    - cron: "0,30 17-23 26-29 3 *"   # March 26–29, 5pm–11:30pm UTC
+    - cron: "0,30 0-5  27-30 3 *"    # March 27–30, midnight–5am UTC
     - cron: "0,30 17-23 4 4 *"       # April 4, 5pm–11:30pm UTC
     - cron: "0,30 0-5  5 4 *"        # April 5, midnight–5am UTC
     - cron: "0,30 17-23 6 4 *"       # April 6, 5pm–11:30pm UTC
