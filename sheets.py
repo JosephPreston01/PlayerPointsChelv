@@ -1,5 +1,4 @@
 import os
-from datetime import date
 
 import gspread
 from google.oauth2.credentials import Credentials
@@ -7,6 +6,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 from config import GOOGLE_SHEET_ID, GOOGLE_CREDS_FILE, WATCHED_PLAYERS, ROUND_DATES
+from read_scores import _game_date
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
@@ -15,8 +15,9 @@ PLAYER_INDEX = {p["name"]: i for i, p in enumerate(WATCHED_PLAYERS)}
 
 
 def get_current_round():
-    """Returns the round number (1-6) for today's date, or None if no games today."""
-    today = date.today().strftime("%Y-%m-%d")
+    """Returns the round number (1-6) for today's game date, or None if no games today."""
+    raw = _game_date()  # "YYYYMMDD", accounts for overnight UTC/CST offset
+    today = f"{raw[:4]}-{raw[4:6]}-{raw[6:]}"
     for round_num, dates in ROUND_DATES.items():
         if today in dates:
             return round_num
