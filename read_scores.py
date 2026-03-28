@@ -10,13 +10,14 @@ def _game_date():
     return date.strftime("%Y%m%d")
 
 
-def fetch_player_points():
+def fetch_player_points(date=None):
     """
-    Fetches today's NCAA Tournament games and returns points for watched players.
+    Fetches NCAA Tournament games and returns points for watched players.
+    date: optional "YYYYMMDD" string; defaults to today via _game_date().
     Returns a list of dicts: [{"player_name": "...", "points": 0}, ...]
     """
     scoreboard_url = f"{ESPN_BASE_URL}/scoreboard"
-    resp = requests.get(scoreboard_url, params={"groups": "100", "caldate": _game_date()}, timeout=10)
+    resp = requests.get(scoreboard_url, params={"groups": "100", "dates": date or _game_date()}, timeout=10)
     resp.raise_for_status()
     games = resp.json().get("events", [])
 

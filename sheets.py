@@ -14,9 +14,11 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 PLAYER_INDEX = {p["name"]: i for i, p in enumerate(WATCHED_PLAYERS)}
 
 
-def get_current_round():
-    """Returns the round number (1-6) for today's game date, or None if no games today."""
-    raw = _game_date()  # "YYYYMMDD", accounts for overnight UTC/CST offset
+def get_current_round(date=None):
+    """Returns the round number (1-6) for the given date, or None if no games that day.
+    date: optional "YYYYMMDD" string; defaults to today via _game_date().
+    """
+    raw = date or _game_date()  # "YYYYMMDD", accounts for overnight UTC/CST offset
     today = f"{raw[:4]}-{raw[4:6]}-{raw[6:]}"
     for round_num, dates in ROUND_DATES.items():
         if today in dates:
